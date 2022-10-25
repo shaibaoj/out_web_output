@@ -1,1 +1,0 @@
-import{$ as r,O as o}from"./index.9c437169.js";const s="YYYY-MM-DD HH:mm:ss",f="YYYY-MM-DD";function a(t,n=s){return r(t).format(n)}function m(t,n=f){return typeof t=="number"&&t<1666368e4&&(t=t*1e3),r(t).format(n)}function u(t){return r(t).unix()}function e(t){return o(t)?["",""]:t.split(" - ")}export{m as a,u as b,a as f,e as s};
