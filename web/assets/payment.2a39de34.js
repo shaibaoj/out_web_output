@@ -1,1 +1,0 @@
-import{r as t}from"./index.814ec1c6.js";const a={getItems:"/api/user/info/payment/list",getView:"/api/user/info/payment/view",updateItem:"/api/user/info/payment/update"};function i(e){return t({url:a.updateItem,method:"post",data:e})}export{a,i as u};
