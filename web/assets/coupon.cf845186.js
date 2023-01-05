@@ -1,0 +1,36 @@
+import{r as w,d as P,a7 as T,G as Y,a8 as O,l as M,C as q,n as m,e as S,w as s,b as z,h as a,j as _,u as c,B as h,g as i,a as r,a9 as L,q as g,aa as x,ab as N,k as R}from"./index.1c6d5825.js";const f={couponList:"/api/admin/goods_apply/list",pass:"/api/admin/goods_apply/pass",reject:"/api/admin/goods_apply/reject",upOnline:"/api/admin/goods_apply/upOnline",pass_all:"/api/admin/goods_apply/pass_all"};function G(l){return w({url:f.pass,method:"post",data:l})}function H(l){return w({url:f.reject,method:"post",data:l})}function I(l){return w({url:f.upOnline,method:"post",data:l})}function W(l){return w({url:f.pass_all,method:"post",data:l})}const J={class:"mt-2 xl:mt-0"},K=i("option",{value:""},"\u5168\u90E8",-1),Q=i("option",{value:"2"},"\u901A\u8FC7",-1),X=i("option",{value:"1"},"\u5BA1\u6838\u4E2D",-1),Z=i("option",{value:"0"},"\u8349\u7A3F",-1),ee=i("option",{value:"-1"},"\u62D2\u7EDD",-1),te=i("option",{value:"-2"},"\u4E0B\u67B6",-1),ae={class:"mt-2 xl:mt-0"},se=P({__name:"coupon",setup(l){const D=T(),b=Y(()=>`${D.urlPrefix}${D.apiUrl}${f.couponList}`),k=O({}),C=[{formatter:"responsiveCollapse",width:40,minWidth:30,hozAlign:"center",resizable:!0,headerSort:!1},{title:"",field:"title",formatter(e){return r(`
+          <div class="flex items-center">
+            <div class="w-9 h-9 image-fit zoom-in">
+              <a target="_blank" href="${e.getData().item_url}" class="font-medium whitespace-nowrap">
+              <img class="border-white rounded-lg shadow-md" src="${e.getData().pic_url||""}" />
+              </a>
+            </div>
+            <div class="ml-4">
+              <a target="_blank" href="${e.getData().item_url}" class="font-medium whitespace-nowrap">
+              <div class="font-medium whitespace-nowrap">
+                ${e.getData().d_title||""}
+              </div>
+              </a>
+
+              <a target="_blank" href="${e.getData().item_url}" class="font-medium whitespace-nowrap">
+              <div class="text-slate-500 text-xs whitespace-nowrap mt-0.5">
+                ${e.getData().title||""}
+              </div>
+              </a>
+            </div>
+          </div>
+          `)[0]},download:!0},{title:"\u5238",hozAlign:"center",width:80,field:"money",formatter(e){return r(`<a target="_blank" href="${e.getData().coupon_url}" class="underline decoration-dotted">
+        ${e.getData().money}
+        </a>`)[0]}},{title:"\u4EF7\u683C",width:80,field:"price",sorter:!0,formatter(e){return r(`<a target="_blank" href="${e.getData().item_url}">
+          ${e.getData().price}
+        </a>`)[0]}},{title:"\u9500\u91CF",width:80,field:"volume"},{title:"\u72B6\u6001",width:80,field:"status_name",sorter:!0},{title:"\u680F\u76EE",field:"cid1",width:80},{title:"\u5E97\u94FA",field:"user_type",width:80},{title:"\u65F6\u95F4",width:140,field:"updated_at",formatter(e){return L(e.getData().created_at,"YY-MM-DD HH:mm")}},{title:"\u65E5/2\u5C0F\u65F6",width:80,field:"data.day_sales",formatter(e){var t,o;return`${((t=e.getData().data)==null?void 0:t.day_sales)||"0"}/${((o=e.getData().data)==null?void 0:o.sales2h)||"0"}`}},{title:"\u53D1\u5E03\u4EBA",width:120,field:"user.nick_name"},{title:"\u64CD\u4F5C",field:"action",width:120,formatter(e){const t=r(`<div class="flex items-center lg:justify-center">
+        ${e.getData().status===1?`<a class="flex items-center mr-3 action-pass" href="javascript:;">
+                <i data-lucide="check-square" class="w-4 h-4 mr-1"></i> \u901A\u8FC7
+              </a>`:""}
+        ${e.getData().status===1?`<a class="flex items-center text-danger action-reject" href="javascript:;">
+                <i data-lucide="trash-2" class="w-4 h-4 mr-1"></i> \u62D2\u7EDD
+              </a>`:""}
+              ${e.getData().status<0?`<a class="flex items-center text-danger action-uponline" href="javascript:;">
+                <i data-lucide="trash-2" class="w-4 h-4 mr-1"></i> \u4E0A\u67B6
+              </a>`:""}
+              </div>`);return r(t).find(".action-pass").on("click",function(o){B(e.getData())}),r(t).find(".action-reject").on("click",function(o){E(e.getData())}),r(t).find(".action-uponline").on("click",function(o){$(e.getData())}),t[0]}}],u=M({rangePicker:"",status:0,startTime:"",endTime:"",item_id:"",url:""}),d=q(),E=e=>{H({id:e.id}).then(()=>{g.success("\u5DF2\u62D2\u7EDD"),d.value.reload()})},B=e=>{G({id:e.id}).then(t=>{g.success(t.message),d.value.reload()})},$=e=>{I({id:e.id}).then(()=>{g.success("\u4E0A\u67B6\u6210\u529F"),d.value.reload()})},y=e=>{W({force:e}).then(()=>{g.success("\u6279\u91CF\u5BA1\u6838\u5B8C\u6210"),d.value.reload()})},v=()=>{u.startTime=x(u.rangePicker)[0],u.endTime=x(u.rangePicker)[0],d.value.reload(!0)};return(e,t)=>{const o=m("FormInput"),p=m("h-form-item"),A=m("Litepicker"),F=m("h-form"),V=N,j=m("FormSelect"),U=m("h-card");return z(),S(U,{bordered:!1,title:"\u4F18\u60E0\u5238\u5BA1\u6838"},{header:s(()=>[a(c(h),{variant:"primary",class:"mr-2 shadow-md",onClick:t[0]||(t[0]=n=>y(0))},{default:s(()=>[_("\u4E00\u952E\u6279\u91CF\u5BA1\u6838 ")]),_:1}),a(c(h),{variant:"primary",class:"mr-2 shadow-md",onClick:t[1]||(t[1]=n=>y(1))},{default:s(()=>[_("\u4E00\u952E\u6279\u91CF\u5F3A\u5236\u5BA1\u6838 ")]),_:1})]),search:s(()=>[a(F,{layout:"inline"},{default:s(()=>[a(p,{label:"\u72B6\u6001",content:"",layout:"inline"},{default:s(()=>[a(j,{modelValue:u.status,"onUpdate:modelValue":t[4]||(t[4]=n=>u.status=n),class:"mt-2 w-full sm:mt-0 sm:w-auto",onChange:v},{default:s(()=>[K,Q,X,Z,ee,te]),_:1},8,["modelValue"])]),_:1}),a(p,{label:"\u5546\u54C1\u7F16\u53F7",content:"",layout:"inline"},{default:s(()=>[a(o,{modelValue:u.item_id,"onUpdate:modelValue":t[5]||(t[5]=n=>u.item_id=n),type:"text",class:"mt-2 sm:mt-0 sm:w-40 2xl:w-full"},null,8,["modelValue"])]),_:1}),a(p,{label:"\u5546\u54C1\u5730\u5740",content:"",layout:"inline"},{default:s(()=>[a(o,{modelValue:u.url,"onUpdate:modelValue":t[6]||(t[6]=n=>u.url=n),type:"text",class:"mt-2 sm:mt-0 sm:w-40 2xl:w-full"},null,8,["modelValue"])]),_:1}),i("div",ae,[a(c(h),{variant:"primary",type:"button",class:"w-full sm:w-16",onClick:v},{default:s(()=>[_(" \u67E5\u8BE2 ")]),_:1})])]),_:1})]),default:s(()=>[a(V,{ref_key:"tableRef",ref:d,columns:C,ajaxUrl:c(b),config:c(k),queryParam:u},{search:s(()=>[a(F,{layout:"inline"},{default:s(()=>[a(p,{label:"\u5546\u54C1\u7F16\u53F7",content:"",layout:"inline"},{default:s(()=>[a(o,{modelValue:u.item_id,"onUpdate:modelValue":t[2]||(t[2]=n=>u.item_id=n),type:"text",class:"mt-2 sm:mt-0 sm:w-40 2xl:w-full"},null,8,["modelValue"])]),_:1}),a(p,{label:"\u521B\u5EFA\u65F6\u95F4",content:"",layout:"inline"},{default:s(()=>[a(A,{modelValue:u.rangePicker,"onUpdate:modelValue":t[3]||(t[3]=n=>u.rangePicker=n),options:{autoApply:!1,singleMode:!1,numberOfColumns:2,numberOfMonths:2,showWeekNumbers:!0,format:"YYYY-MM-DD",dropdowns:{minYear:1990,maxYear:null,months:!0,years:!0}},class:"mt-2 sm:mt-0 sm:w-56 2xl:w-full"},null,8,["modelValue"])]),_:1}),i("div",J,[a(c(h),{variant:"primary",type:"button",class:"w-full sm:w-16",onClick:v},{default:s(()=>[_(" \u67E5\u8BE2 ")]),_:1})])]),_:1})]),_:1},8,["ajaxUrl","config","queryParam"])]),_:1})}}}),ne=R(se,[["__file","/Users/wu./Documents/os/web/www/web/src/views/user/admin/coupon.vue"]]);export{ne as default};
