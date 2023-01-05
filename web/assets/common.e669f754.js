@@ -1,1 +1,0 @@
-import{r as t}from"./index.004badce.js";const s={list:"/api/common/channel/items",getGoodsItems:"/api/common/goods/list",getGoodsView:"/api/common/goods/view"};function i(o){return t({url:s.list,method:"post",data:o})}export{i as g};
